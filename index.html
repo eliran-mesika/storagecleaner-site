@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StorageCleaner — AI Storage Optimizer for iPhone</title>
+    <meta name="description" content="Free up iPhone storage with on-device AI. Find duplicates, search photos by description, compress videos, and clean contacts. Privacy-first — your data never leaves your device.">
+    <meta name="apple-itunes-app" content="app-id=6761749597, app-argument=https://apps.apple.com/app/id6761749597">
+    <meta property="og:title" content="StorageCleaner — AI Storage Optimizer for iPhone">
+    <meta property="og:description" content="On-device AI finds duplicates, compresses videos, and frees up space fast. Your data never leaves your iPhone.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eliran-mesika.github.io/storagecleaner-site/">
+    <link rel="canonical" href="https://eliran-mesika.github.io/storagecleaner-site/">
+    <style>
+        :root {
+            --bg: #f6f8fb;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --tertiary: #64748b;
+            --border: #d9e2ec;
+            --accent: #0a66ff;
+            --accent-hover: #0057d9;
+            --accent2: #0ea5e9;
+            --success: #179d6b;
+            --radius: 20px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center;
+            padding: 64px 20px 48px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .hero-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(10, 102, 255, 0.25);
+        }
+        .hero-icon svg {
+            width: 44px;
+            height: 44px;
+            fill: #fff;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 32px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 16px 40px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: background 0.2s;
+            box-shadow: 0 4px 16px rgba(10, 102, 255, 0.3);
+        }
+        .cta-btn:hover { background: var(--accent-hover); }
+        .badge-row {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.88rem;
+            color: var(--tertiary);
+            font-weight: 500;
+        }
+        .badge svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--success);
+        }
+
+        /* --- Features --- */
+        .features {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px 64px;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+        }
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 1.4rem;
+        }
+        .fi-dashboard { background: #eff6ff; }
+        .fi-search { background: #f0fdf4; }
+        .fi-duplicate { background: #fef3c7; }
+        .fi-video { background: #fce7f3; }
+        .fi-contacts { background: #f0f9ff; }
+        .fi-privacy { background: #ecfdf5; }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: var(--muted);
+        }
+
+        /* --- Privacy Banner --- */
+        .privacy-banner {
+            max-width: 720px;
+            margin: 0 auto 64px;
+            padding: 0 20px;
+        }
+        .privacy-card {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            text-align: center;
+            color: #fff;
+        }
+        .privacy-card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        .privacy-card p {
+            color: #94a3b8;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .privacy-checks {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .privacy-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+        .privacy-check svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--success);
+        }
+
+        /* --- Pricing --- */
+        .pricing {
+            max-width: 720px;
+            margin: 0 auto 64px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .pricing h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .pricing > p {
+            color: var(--muted);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+        .price-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 520px) {
+            .price-cards { grid-template-columns: 1fr; }
+        }
+        .price-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .price-card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px var(--accent), 0 8px 28px rgba(10, 102, 255, 0.12);
+        }
+        .price-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--tertiary);
+            margin-bottom: 8px;
+        }
+        .price-card.featured .price-label { color: var(--accent); }
+        .price-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .price-period {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .price-features {
+            list-style: none;
+            text-align: left;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+        .price-features li {
+            padding: 6px 0;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+        }
+        .price-features li::before {
+            content: "\2713";
+            color: var(--success);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* --- CTA Bottom --- */
+        .cta-bottom {
+            text-align: center;
+            padding: 0 20px 64px;
+        }
+        .cta-bottom h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .cta-bottom p {
+            color: var(--muted);
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 32px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .footer a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .footer a:hover { color: var(--accent); }
+        .footer-copy {
+            color: var(--tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .hero { padding: 48px 16px 36px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.05rem; }
+            .features h2, .pricing h2, .cta-bottom h2 { font-size: 1.5rem; }
+            .privacy-checks { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/></svg>
+    </div>
+    <h1>Free up space.<br><span>Keep what matters.</span></h1>
+    <p>StorageCleaner uses on-device AI to find duplicates, search photos by description, compress videos, and clean contacts. Your data never leaves your iPhone.</p>
+    <a class="cta-btn" href="https://apps.apple.com/app/id6761749597">Download Free on the App Store</a>
+    <div class="badge-row">
+        <span class="badge">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            100% On-Device AI
+        </span>
+        <span class="badge">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            No Cloud Uploads
+        </span>
+        <span class="badge">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Free to Try
+        </span>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+    <h2>Everything you need to reclaim your storage</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon fi-dashboard">&#128202;</div>
+            <h3>Smart Storage Dashboard</h3>
+            <p>See exactly where your storage is going. Spot the biggest space hogs at a glance and track your cleanup history over time.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-search">&#10024;</div>
+            <h3>AI Semantic Photo Search</h3>
+            <p>Describe what you're looking for — "sunset at the beach", "birthday cake" — and find photos you forgot you had. Powered by on-device AI.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-duplicate">&#128247;</div>
+            <h3>Duplicate Detection</h3>
+            <p>Automatically find exact and near-duplicate photos. Review matches side by side with confidence scores and remove extras with a single tap.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-video">&#127909;</div>
+            <h3>Video Compression</h3>
+            <p>Compress large videos to a fraction of their size while preserving visual quality. Free up significant space instantly.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-contacts">&#128101;</div>
+            <h3>Contacts Cleanup</h3>
+            <p>Find and merge duplicate contacts, remove incomplete entries, and keep your address book organized.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon fi-privacy">&#128274;</div>
+            <h3>Screenshots & Blurry Photos</h3>
+            <p>Old screenshots and blurry shots add up. Identify them in seconds, review in bulk, and delete what you don't need.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Privacy Banner -->
+<section class="privacy-banner">
+    <div class="privacy-card">
+        <h2>Privacy First. Always.</h2>
+        <p>All AI processing runs entirely on your device using Apple's Neural Engine. Your photos, videos, and contacts never leave your phone.</p>
+        <div class="privacy-checks">
+            <span class="privacy-check">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                Zero cloud uploads
+            </span>
+            <span class="privacy-check">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                No external servers
+            </span>
+            <span class="privacy-check">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                No tracking
+            </span>
+            <span class="privacy-check">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                Review before deleting
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+    <h2>Simple pricing</h2>
+    <p>Try for free. Upgrade when you're ready.</p>
+    <div class="price-cards">
+        <div class="price-card">
+            <div class="price-label">Free</div>
+            <div class="price-amount">$0</div>
+            <div class="price-period">forever</div>
+            <ul class="price-features">
+                <li>3 dashboard scans per day</li>
+                <li>Preview all cleanup results</li>
+                <li>Limited semantic search preview</li>
+                <li>1 video action per day</li>
+            </ul>
+        </div>
+        <div class="price-card featured">
+            <div class="price-label">Premium</div>
+            <div class="price-amount">$19.99</div>
+            <div class="price-period">per year ($3.99/month)</div>
+            <ul class="price-features">
+                <li>Unlimited AI Semantic Search</li>
+                <li>Full Duplicate & Similar Detection</li>
+                <li>Video Compression</li>
+                <li>Contacts Cleanup</li>
+                <li>Unlimited scans & actions</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="cta-bottom">
+    <h2>Ready to free up space?</h2>
+    <p>Download StorageCleaner and see how much space you can reclaim — for free.</p>
+    <a class="cta-btn" href="https://apps.apple.com/app/id6761749597">Download on the App Store</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-links">
+        <a href="./support/">Support</a>
+        <a href="./privacy/">Privacy Policy</a>
+        <a href="./terms/">Terms of Service</a>
+        <a href="mailto:mesikaeliran@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 StorageCleaner. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
