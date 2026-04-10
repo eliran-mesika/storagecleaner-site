@@ -3,477 +3,1419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StorageCleaner — AI Storage Optimizer for iPhone</title>
-    <meta name="description" content="Free up iPhone storage with on-device AI. Find duplicates, search photos by description, compress videos, and clean contacts. Privacy-first — your data never leaves your device.">
+    <title>StorageCleaner — Free Up iPhone Space Safely</title>
+    <meta
+        name="description"
+        content="Free up iPhone storage without deleting blindly. StorageCleaner uses on-device AI to help you review duplicates, similar photos, screenshots, large videos, and more before anything is removed."
+    >
     <meta name="apple-itunes-app" content="app-id=6761749597, app-argument=https://apps.apple.com/app/id6761749597">
-    <meta property="og:title" content="StorageCleaner — AI Storage Optimizer for iPhone">
-    <meta property="og:description" content="On-device AI finds duplicates, compresses videos, and frees up space fast. Your data never leaves your iPhone.">
+    <meta property="og:title" content="StorageCleaner — Free Up iPhone Space Safely">
+    <meta
+        property="og:description"
+        content="A privacy-first iPhone cleaner with on-device AI, review-before-delete cleanup, and no cloud uploads."
+    >
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eliran-mesika.github.io/storagecleaner-site/">
     <link rel="canonical" href="https://eliran-mesika.github.io/storagecleaner-site/">
     <style>
         :root {
-            --bg: #f6f8fb;
-            --surface: #ffffff;
+            --bg: #f5f7fb;
+            --surface: rgba(255, 255, 255, 0.82);
+            --surface-strong: #ffffff;
+            --surface-dark: #0d1b2a;
             --text: #0f172a;
-            --muted: #475569;
-            --tertiary: #64748b;
-            --border: #d9e2ec;
+            --muted: #526075;
+            --muted-soft: #718198;
+            --border: rgba(148, 163, 184, 0.22);
+            --line: rgba(148, 163, 184, 0.16);
             --accent: #0a66ff;
-            --accent-hover: #0057d9;
-            --accent2: #0ea5e9;
-            --success: #179d6b;
-            --radius: 20px;
+            --accent-deep: #0057d9;
+            --accent-soft: #dbeafe;
+            --success: #12715b;
+            --success-soft: #dcfce7;
+            --shadow-lg: 0 30px 70px rgba(15, 23, 42, 0.12);
+            --shadow-md: 0 18px 40px rgba(15, 23, 42, 0.08);
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --content: 1180px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-            background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
             color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(10, 102, 255, 0.10), transparent 36%),
+                radial-gradient(circle at top right, rgba(14, 165, 233, 0.14), transparent 28%),
+                linear-gradient(180deg, #fbfdff 0%, var(--bg) 48%, #ffffff 100%);
             -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        /* --- Hero --- */
-        .hero {
-            text-align: center;
-            padding: 64px 20px 48px;
-            max-width: 680px;
-            margin: 0 auto;
+        img {
+            display: block;
+            max-width: 100%;
         }
-        .hero-icon {
-            width: 88px;
-            height: 88px;
-            border-radius: 22px;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 32px rgba(10, 102, 255, 0.25);
-        }
-        .hero-icon svg {
-            width: 44px;
-            height: 44px;
-            fill: #fff;
-        }
-        .hero h1 {
-            font-size: 2.6rem;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: var(--muted);
-            max-width: 520px;
-            margin: 0 auto 32px;
-        }
-        .cta-btn {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 16px 40px;
-            border-radius: 14px;
+
+        a {
+            color: inherit;
             text-decoration: none;
-            transition: background 0.2s;
-            box-shadow: 0 4px 16px rgba(10, 102, 255, 0.3);
-        }
-        .cta-btn:hover { background: var(--accent-hover); }
-        .badge-row {
-            margin-top: 16px;
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.88rem;
-            color: var(--tertiary);
-            font-weight: 500;
-        }
-        .badge svg {
-            width: 16px;
-            height: 16px;
-            fill: var(--success);
         }
 
-        /* --- Features --- */
-        .features {
-            max-width: 960px;
+        .page-shell {
+            width: min(100% - 32px, var(--content));
             margin: 0 auto;
-            padding: 0 20px 64px;
         }
-        .features h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 40px;
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(22px);
+            background: rgba(245, 247, 251, 0.72);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.10);
         }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+
+        .topbar-inner {
+            width: min(100% - 32px, var(--content));
+            margin: 0 auto;
+            padding: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
         }
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-            transition: transform 0.2s, box-shadow 0.2s;
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
         }
-        .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
-        }
-        .feature-icon {
+
+        .brand-icon {
             width: 44px;
             height: 44px;
             border-radius: 12px;
+            box-shadow: 0 10px 28px rgba(18, 24, 40, 0.18);
+        }
+
+        .brand-copy {
+            min-width: 0;
+        }
+
+        .brand-name {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-subtitle {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .button-row {
             display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .button {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
-            font-size: 1.4rem;
-        }
-        .fi-dashboard { background: #eff6ff; }
-        .fi-search { background: #f0fdf4; }
-        .fi-duplicate { background: #fef3c7; }
-        .fi-video { background: #fce7f3; }
-        .fi-contacts { background: #f0f9ff; }
-        .fi-privacy { background: #ecfdf5; }
-        .feature-card h3 {
-            font-size: 1.1rem;
+            gap: 8px;
+            border-radius: 999px;
+            padding: 14px 22px;
             font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 0.98rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
         }
-        .feature-card p {
-            font-size: 0.95rem;
-            line-height: 1.55;
+
+        .button:hover {
+            transform: translateY(-1px);
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, var(--accent), #2b8cff);
+            color: #ffffff;
+            box-shadow: 0 18px 34px rgba(10, 102, 255, 0.20);
+        }
+
+        .button-primary:hover {
+            background: linear-gradient(135deg, var(--accent-deep), #1874ff);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            color: var(--text);
+        }
+
+        .button-quiet {
+            font-size: 0.94rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .hero {
+            padding: 48px 0 28px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
+            gap: 36px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(148, 163, 184, 0.20);
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .eyebrow-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #4ea6ff);
+            box-shadow: 0 0 0 6px rgba(10, 102, 255, 0.10);
+        }
+
+        h1 {
+            font-size: clamp(2.65rem, 6vw, 4.9rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            font-weight: 760;
+            max-width: 12ch;
+        }
+
+        .hero-lead {
+            margin-top: 20px;
+            max-width: 62ch;
+            font-size: 1.15rem;
+            line-height: 1.75;
             color: var(--muted);
         }
 
-        /* --- Privacy Banner --- */
-        .privacy-banner {
-            max-width: 720px;
-            margin: 0 auto 64px;
-            padding: 0 20px;
-        }
-        .privacy-card {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            border-radius: var(--radius);
-            padding: 40px 32px;
-            text-align: center;
-            color: #fff;
-        }
-        .privacy-card h2 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-        }
-        .privacy-card p {
-            color: #94a3b8;
-            font-size: 1.05rem;
+        .hero-microcopy {
+            margin-top: 16px;
+            color: var(--muted-soft);
+            font-size: 0.95rem;
             line-height: 1.6;
-            max-width: 520px;
-            margin: 0 auto;
         }
-        .privacy-checks {
+
+        .hero-actions {
+            margin-top: 28px;
+        }
+
+        .trust-badges {
             display: flex;
-            justify-content: center;
-            gap: 28px;
             flex-wrap: wrap;
-            margin-top: 24px;
+            gap: 12px;
+            margin-top: 22px;
         }
-        .privacy-check {
-            display: flex;
+
+        .trust-badge {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.95rem;
-            color: #e2e8f0;
-            font-weight: 500;
-        }
-        .privacy-check svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--success);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
         }
 
-        /* --- Pricing --- */
-        .pricing {
-            max-width: 720px;
-            margin: 0 auto 64px;
-            padding: 0 20px;
-            text-align: center;
+        .trust-badge svg {
+            width: 15px;
+            height: 15px;
+            fill: var(--success);
+            flex-shrink: 0;
         }
-        .pricing h2 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
+
+        .hero-visual {
+            position: relative;
+            min-height: 680px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .pricing > p {
-            color: var(--muted);
-            margin-bottom: 32px;
-            font-size: 1.05rem;
+
+        .hero-glow {
+            position: absolute;
+            inset: 8% 4% auto 8%;
+            height: 74%;
+            border-radius: 42px;
+            background:
+                radial-gradient(circle at top, rgba(10, 102, 255, 0.26), transparent 52%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(225, 236, 255, 0.64));
+            filter: blur(2px);
         }
-        .price-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+
+        .phone-frame {
+            position: relative;
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid rgba(255, 255, 255, 0.84);
+            border-radius: 38px;
+            padding: 14px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(20px);
         }
-        @media (max-width: 520px) {
-            .price-cards { grid-template-columns: 1fr; }
+
+        .phone-frame img {
+            width: 100%;
+            border-radius: 28px;
         }
-        .price-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            text-align: center;
+
+        .phone-main {
+            width: min(100%, 360px);
+            z-index: 2;
         }
-        .price-card.featured {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 1px var(--accent), 0 8px 28px rgba(10, 102, 255, 0.12);
+
+        .phone-search {
+            position: absolute;
+            width: 214px;
+            top: 52px;
+            right: -10px;
+            transform: rotate(8deg);
+            z-index: 1;
         }
-        .price-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--tertiary);
-            margin-bottom: 8px;
+
+        .phone-cleanup {
+            position: absolute;
+            width: 226px;
+            left: -12px;
+            bottom: 44px;
+            transform: rotate(-9deg);
+            z-index: 1;
         }
-        .price-card.featured .price-label { color: var(--accent); }
-        .price-amount {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 4px;
+
+        .floating-note {
+            position: absolute;
+            right: 32px;
+            bottom: 0;
+            z-index: 3;
+            max-width: 240px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 22px;
+            padding: 18px 18px 16px;
+            box-shadow: var(--shadow-md);
         }
-        .price-period {
+
+        .floating-note strong {
+            display: block;
+            font-size: 0.92rem;
+            letter-spacing: -0.01em;
+        }
+
+        .floating-note p {
+            margin-top: 6px;
             color: var(--muted);
             font-size: 0.9rem;
-            margin-bottom: 16px;
+            line-height: 1.5;
         }
-        .price-features {
-            list-style: none;
-            text-align: left;
-            font-size: 0.92rem;
+
+        section {
+            padding: 42px 0;
+        }
+
+        .section-header {
+            max-width: 760px;
+            margin-bottom: 24px;
+        }
+
+        .section-header.centered {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.15rem);
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            font-weight: 740;
+        }
+
+        .section-copy {
+            margin-top: 14px;
             color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.78;
         }
-        .price-features li {
-            padding: 6px 0;
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .proof-stack {
+            display: grid;
+            gap: 22px;
+        }
+
+        .shot-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 18px;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .shot-card img {
+            width: 100%;
+            border-radius: 26px;
+            background: #f4f7fb;
+            box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+        }
+
+        .shot-card h3 {
+            margin-top: 16px;
+            font-size: 1.14rem;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .shot-card p {
+            margin-top: 8px;
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 0.97rem;
+        }
+
+        .pain-grid,
+        .steps-grid,
+        .difference-grid,
+        .trust-grid,
+        .pricing-grid,
+        .meta-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .pain-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .steps-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .difference-grid,
+        .trust-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .pricing-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+        }
+
+        .meta-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 18px;
+        }
+
+        .glass-card,
+        .step-card,
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(18px);
+        }
+
+        .glass-card strong,
+        .step-card strong,
+        .pricing-card strong {
+            display: block;
+            font-size: 1.06rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .glass-card p,
+        .step-card p,
+        .pricing-card p,
+        .meta-card p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 0.96rem;
+            line-height: 1.68;
+        }
+
+        .card-kicker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .pill-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .pill-list li {
             display: flex;
-            align-items: start;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--muted);
+            line-height: 1.62;
+            font-size: 0.95rem;
         }
-        .price-features li::before {
-            content: "\2713";
+
+        .pill-list li::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            margin-top: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .difference {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.90));
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .difference-lead {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+            gap: 22px;
+            align-items: start;
+            margin-bottom: 24px;
+        }
+
+        .quote-card {
+            background: linear-gradient(180deg, #0f1e35, #132947);
+            color: #f8fbff;
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quote-card p {
+            color: rgba(235, 244, 255, 0.82);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .quote-card strong {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.18rem;
+            letter-spacing: -0.02em;
+        }
+
+        .trust-panel {
+            background: linear-gradient(160deg, rgba(13, 27, 42, 0.96), rgba(17, 36, 58, 0.90));
+            color: #f8fbff;
+            border-radius: 36px;
+            padding: 34px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .trust-panel .section-label {
+            color: #8ec7ff;
+        }
+
+        .trust-panel .section-copy {
+            color: rgba(226, 232, 240, 0.84);
+        }
+
+        .trust-panel .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.10);
+            box-shadow: none;
+        }
+
+        .trust-panel .glass-card strong {
+            color: #ffffff;
+        }
+
+        .trust-panel .glass-card p {
+            color: rgba(226, 232, 240, 0.82);
+        }
+
+        .meta-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 18px;
+            padding: 18px;
+        }
+
+        .meta-card strong {
+            display: block;
+            font-size: 0.98rem;
+            letter-spacing: -0.02em;
+        }
+
+        .pricing-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .pricing-card.featured {
+            border-color: rgba(10, 102, 255, 0.34);
+            box-shadow: 0 26px 52px rgba(10, 102, 255, 0.14);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 7px 11px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .plan-name {
+            font-size: 1.04rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .plan-price {
+            font-size: 2.4rem;
+            line-height: 0.96;
+            letter-spacing: -0.05em;
+            font-weight: 760;
+        }
+
+        .plan-period {
+            color: var(--muted);
+            font-size: 0.92rem;
+            margin-top: -8px;
+        }
+
+        .plan-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.58;
+        }
+
+        .plan-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .plan-list li::before {
+            content: "✓";
             color: var(--success);
             font-weight: 700;
             flex-shrink: 0;
         }
 
-        /* --- CTA Bottom --- */
-        .cta-bottom {
+        .pricing-footnote {
+            margin-top: 18px;
+            color: var(--muted-soft);
+            font-size: 0.92rem;
+            line-height: 1.66;
             text-align: center;
-            padding: 0 20px 64px;
-        }
-        .cta-bottom h2 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-        .cta-bottom p {
-            color: var(--muted);
-            margin-bottom: 24px;
-            font-size: 1.05rem;
         }
 
-        /* --- Footer --- */
-        .footer {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 32px 20px;
-            border-top: 1px solid var(--border);
+        .faq {
+            padding-bottom: 60px;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        details {
+            background: var(--surface-strong);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 22px;
+            padding: 0 22px;
+            box-shadow: var(--shadow-md);
+        }
+
+        summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 22px 0;
+            font-weight: 650;
+            letter-spacing: -0.02em;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            justify-content: space-between;
             gap: 16px;
         }
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .footer a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .footer a:hover { color: var(--accent); }
-        .footer-copy {
-            color: var(--tertiary);
-            font-size: 0.85rem;
+
+        summary::-webkit-details-marker {
+            display: none;
         }
 
-        /* --- Responsive --- */
-        @media (max-width: 600px) {
-            .hero { padding: 48px 16px 36px; }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1.05rem; }
-            .features h2, .pricing h2, .cta-bottom h2 { font-size: 1.5rem; }
-            .privacy-checks { gap: 16px; }
+        summary::after {
+            content: "+";
+            color: var(--accent);
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        .faq-answer {
+            padding: 0 0 22px;
+            color: var(--muted);
+            font-size: 0.97rem;
+            line-height: 1.72;
+        }
+
+        .final-cta {
+            padding-bottom: 120px;
+        }
+
+        .cta-panel {
+            border-radius: 36px;
+            padding: 34px;
+            background:
+                radial-gradient(circle at top right, rgba(111, 190, 255, 0.34), transparent 34%),
+                linear-gradient(135deg, #0f1f34, #102640 62%, #12325b);
+            color: #ffffff;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-panel h2 {
+            max-width: 10ch;
+        }
+
+        .cta-panel p {
+            margin-top: 14px;
+            max-width: 58ch;
+            color: rgba(226, 232, 240, 0.84);
+            line-height: 1.74;
+        }
+
+        .cta-panel .button-row {
+            margin-top: 26px;
+        }
+
+        .footer {
+            width: min(100% - 32px, var(--content));
+            margin: 0 auto;
+            padding: 0 0 116px;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            color: var(--muted-soft);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-download {
+            position: fixed;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            z-index: 40;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(148, 163, 184, 0.20);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+            backdrop-filter: blur(18px);
+        }
+
+        .mobile-download strong {
+            display: block;
+            font-size: 0.96rem;
+            letter-spacing: -0.02em;
+        }
+
+        .mobile-download span {
+            display: block;
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 0.83rem;
+        }
+
+        @media (max-width: 1080px) {
+            .hero-grid,
+            .proof-grid,
+            .difference-lead,
+            .difference-grid,
+            .trust-grid,
+            .pricing-grid,
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                min-height: 620px;
+                margin-top: 10px;
+            }
+
+            .phone-search {
+                right: 10px;
+            }
+
+            .phone-cleanup {
+                left: 8px;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .pain-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar-inner {
+                padding: 14px 0;
+            }
+
+            .topbar .button-primary {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 34px;
+            }
+
+            h1 {
+                max-width: 11ch;
+            }
+
+            .hero-visual {
+                min-height: 560px;
+            }
+
+            .phone-main {
+                width: min(100%, 320px);
+            }
+
+            .phone-search {
+                width: 185px;
+                top: 28px;
+            }
+
+            .phone-cleanup {
+                width: 194px;
+                left: 4px;
+                bottom: 26px;
+            }
+
+            .floating-note {
+                right: 10px;
+                max-width: 220px;
+            }
+
+            .mobile-download {
+                display: flex;
+            }
+
+            .footer {
+                padding-bottom: 142px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .page-shell,
+            .topbar-inner,
+            .footer {
+                width: min(100% - 24px, var(--content));
+            }
+
+            .brand-subtitle {
+                display: none;
+            }
+
+            .hero {
+                padding: 24px 0 12px;
+            }
+
+            h1 {
+                font-size: 2.55rem;
+                line-height: 0.98;
+            }
+
+            .hero-lead,
+            .section-copy,
+            .cta-panel p {
+                font-size: 1rem;
+            }
+
+            .hero-actions .button-row,
+            .cta-panel .button-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .button-quiet {
+                justify-content: center;
+            }
+
+            .trust-badges {
+                gap: 10px;
+            }
+
+            .trust-badge {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .hero-visual {
+                min-height: 500px;
+            }
+
+            .phone-main {
+                width: 260px;
+            }
+
+            .phone-search {
+                width: 150px;
+                right: 0;
+                top: 46px;
+            }
+
+            .phone-cleanup {
+                width: 160px;
+                left: 0;
+                bottom: 72px;
+            }
+
+            .floating-note {
+                left: 10px;
+                right: 10px;
+                bottom: 0;
+                max-width: none;
+            }
+
+            .glass-card,
+            .step-card,
+            .pricing-card,
+            .quote-card,
+            .trust-panel,
+            .cta-panel,
+            details {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .shot-card {
+                padding: 14px;
+            }
+
+            .shot-card img {
+                border-radius: 22px;
+            }
         }
     </style>
 </head>
 <body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#top" aria-label="StorageCleaner home">
+                <img class="brand-icon" src="./assets/app/icon.png" alt="StorageCleaner app icon">
+                <div class="brand-copy">
+                    <div class="brand-name">StorageCleaner</div>
+                    <div class="brand-subtitle">Privacy-first storage cleanup for iPhone</div>
+                </div>
+            </a>
+            <a class="button button-primary" href="https://apps.apple.com/app/id6761749597">Download on the App Store</a>
+        </div>
+    </header>
 
-<!-- Hero -->
-<section class="hero">
-    <div class="hero-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/></svg>
-    </div>
-    <h1>Free up space.<br><span>Keep what matters.</span></h1>
-    <p>StorageCleaner uses on-device AI to find duplicates, search photos by description, compress videos, and clean contacts. Your data never leaves your iPhone.</p>
-    <a class="cta-btn" href="https://apps.apple.com/app/id6761749597">Download Free on the App Store</a>
-    <div class="badge-row">
-        <span class="badge">
-            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-            100% On-Device AI
-        </span>
-        <span class="badge">
-            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-            No Cloud Uploads
-        </span>
-        <span class="badge">
-            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-            Free to Try
-        </span>
-    </div>
-</section>
+    <main id="top">
+        <section class="hero">
+            <div class="page-shell hero-grid">
+                <div>
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        StorageCleaner for iPhone
+                    </div>
+                    <h1>Free up iPhone space without deleting blindly.</h1>
+                    <p class="hero-lead">
+                        StorageCleaner uses on-device AI to help you find duplicates, similar shots,
+                        screenshots, large videos, and more, then review everything before anything is removed.
+                    </p>
+                    <div class="hero-actions">
+                        <div class="button-row">
+                            <a class="button button-primary" href="https://apps.apple.com/app/id6761749597">Download Free on the App Store</a>
+                            <a class="button button-secondary" href="#proof">See the app</a>
+                        </div>
+                    </div>
+                    <div class="trust-badges">
+                        <span class="trust-badge">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            All AI runs on-device
+                        </span>
+                        <span class="trust-badge">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            No cloud uploads
+                        </span>
+                        <span class="trust-badge">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Review before delete
+                        </span>
+                        <span class="trust-badge">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            iPhone, iOS 17+
+                        </span>
+                    </div>
+                    <p class="hero-microcopy">
+                        Built for people who are running out of storage, have too many duplicate photos,
+                        and do not want a cleaner app making risky decisions for them.
+                    </p>
+                </div>
 
-<!-- Features -->
-<section class="features">
-    <h2>Everything you need to reclaim your storage</h2>
-    <div class="feature-grid">
-        <div class="feature-card">
-            <div class="feature-icon fi-dashboard">&#128202;</div>
-            <h3>Smart Storage Dashboard</h3>
-            <p>See exactly where your storage is going. Spot the biggest space hogs at a glance and track your cleanup history over time.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon fi-search">&#10024;</div>
-            <h3>AI Semantic Photo Search</h3>
-            <p>Describe what you're looking for — "sunset at the beach", "birthday cake" — and find photos you forgot you had. Powered by on-device AI.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon fi-duplicate">&#128247;</div>
-            <h3>Duplicate Detection</h3>
-            <p>Automatically find exact and near-duplicate photos. Review matches side by side with confidence scores and remove extras with a single tap.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon fi-video">&#127909;</div>
-            <h3>Video Compression</h3>
-            <p>Compress large videos to a fraction of their size while preserving visual quality. Free up significant space instantly.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon fi-contacts">&#128101;</div>
-            <h3>Contacts Cleanup</h3>
-            <p>Find and merge duplicate contacts, remove incomplete entries, and keep your address book organized.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon fi-privacy">&#128274;</div>
-            <h3>Screenshots & Blurry Photos</h3>
-            <p>Old screenshots and blurry shots add up. Identify them in seconds, review in bulk, and delete what you don't need.</p>
-        </div>
-    </div>
-</section>
+                <div class="hero-visual" aria-label="StorageCleaner product screenshots">
+                    <div class="hero-glow"></div>
+                    <div class="phone-frame phone-main">
+                        <img src="./assets/screenshots/dashboard.png" alt="StorageCleaner dashboard showing device storage and scan action">
+                    </div>
+                    <div class="phone-frame phone-search">
+                        <img src="./assets/screenshots/search.png" alt="StorageCleaner semantic search using natural language">
+                    </div>
+                    <div class="phone-frame phone-cleanup">
+                        <img src="./assets/screenshots/cleanup.png" alt="StorageCleaner cleanup review showing duplicates and similar photos">
+                    </div>
+                    <div class="floating-note">
+                        <strong>Nothing is removed automatically.</strong>
+                        <p>Scan first, review suggestions, then choose what you want to keep or remove.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- Privacy Banner -->
-<section class="privacy-banner">
-    <div class="privacy-card">
-        <h2>Privacy First. Always.</h2>
-        <p>All AI processing runs entirely on your device using Apple's Neural Engine. Your photos, videos, and contacts never leave your phone.</p>
-        <div class="privacy-checks">
-            <span class="privacy-check">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                Zero cloud uploads
-            </span>
-            <span class="privacy-check">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                No external servers
-            </span>
-            <span class="privacy-check">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                No tracking
-            </span>
-            <span class="privacy-check">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                Review before deleting
-            </span>
+        <section id="proof">
+            <div class="page-shell">
+                <div class="section-header centered">
+                    <div class="section-label">Product Proof</div>
+                    <h2>See what you can clean before you commit.</h2>
+                    <p class="section-copy">
+                        This is not a generic cleaner landing page. It is a real iPhone utility built to help
+                        you understand your storage, review suggestions safely, and reclaim space with confidence.
+                    </p>
+                </div>
+
+                <div class="proof-grid">
+                    <article class="shot-card">
+                        <img src="./assets/screenshots/dashboard.png" alt="Dashboard screenshot with available storage and scan button" loading="eager">
+                        <h3>See where your storage is going.</h3>
+                        <p>Start with a clear storage dashboard so you know what is worth reviewing before you touch anything.</p>
+                    </article>
+
+                    <div class="proof-stack">
+                        <article class="shot-card">
+                            <img src="./assets/screenshots/cleanup.png" alt="Cleanup review screenshot with duplicates and similar photos" loading="lazy">
+                            <h3>Review suggestions before you delete.</h3>
+                            <p>Duplicates, similar photos, screenshots, and blurry shots are grouped into clear review flows.</p>
+                        </article>
+
+                        <article class="shot-card">
+                            <img src="./assets/screenshots/search.png" alt="Search screenshot showing natural language search in photo library" loading="lazy">
+                            <h3>Use natural language to find photos faster.</h3>
+                            <p>Semantic photo search is powered by on-device AI, so your library stays private while the app does more than simple file sorting.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="page-shell">
+                <div class="section-header centered">
+                    <div class="section-label">Why People Download</div>
+                    <h2>Running out of space is frustrating. Cleaning it should not be.</h2>
+                    <p class="section-copy">
+                        Most iPhone users do not need more clutter. They need clarity, confidence, and a way to
+                        clean up without worrying about deleting the wrong memory.
+                    </p>
+                </div>
+
+                <div class="pain-grid">
+                    <article class="glass-card">
+                        <div class="card-kicker">01</div>
+                        <strong>Your storage fills up before you know what is causing it.</strong>
+                        <p>A better cleanup flow starts by showing where space is going instead of throwing a random “clean now” button at you.</p>
+                    </article>
+                    <article class="glass-card">
+                        <div class="card-kicker">02</div>
+                        <strong>Your photo library is full of duplicates, bursts, screenshots, and almost-identical shots.</strong>
+                        <p>The real work is not finding clutter. It is reviewing it quickly enough that cleanup actually happens.</p>
+                    </article>
+                    <article class="glass-card">
+                        <div class="card-kicker">03</div>
+                        <strong>You want more space, but you do not want to make a mistake.</strong>
+                        <p>StorageCleaner is designed around review first, so you stay in control of what gets removed.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="page-shell">
+                <div class="section-header">
+                    <div class="section-label">How It Works</div>
+                    <h2>Understand, review, reclaim.</h2>
+                    <p class="section-copy">
+                        The product flow is simple on purpose. It gives users a fast path to space savings without
+                        pushing them into automatic or destructive cleanup.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+                    <article class="step-card">
+                        <div class="card-kicker">1</div>
+                        <strong>Scan your library and storage.</strong>
+                        <p>See your storage dashboard, category breakdowns, and cleanup opportunities in one place.</p>
+                    </article>
+                    <article class="step-card">
+                        <div class="card-kicker">2</div>
+                        <strong>Review grouped suggestions.</strong>
+                        <p>Check duplicates, similar photos, screenshots, blurry shots, and large videos before you decide what to remove.</p>
+                    </article>
+                    <article class="step-card">
+                        <div class="card-kicker">3</div>
+                        <strong>Keep what matters and free the rest.</strong>
+                        <p>Use StorageCleaner as a decision tool, not a black box. You stay responsible for the final action.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="difference">
+            <div class="page-shell">
+                <div class="difference-lead">
+                    <div class="section-header">
+                        <div class="section-label">Why It Feels Different</div>
+                        <h2>Built like a serious iPhone utility, not a cloud-first cleaner.</h2>
+                        <p class="section-copy">
+                            Generic cleaner apps often feel like a mix of aggressive upsells, vague AI claims, and
+                            too much trust asked too early. StorageCleaner should feel more native, more measured,
+                            and more respectful of what is actually on your phone.
+                        </p>
+                    </div>
+
+                    <aside class="quote-card">
+                        <strong>The core differentiator</strong>
+                        <p>
+                            On-device AI means your photos do not need to be uploaded to a remote server just to
+                            search by meaning or group similar shots. The app works on your iPhone, keeps your
+                            library local, and lets you review results before anything changes.
+                        </p>
+                    </aside>
+                </div>
+
+                <div class="difference-grid">
+                    <article class="glass-card">
+                        <div class="card-kicker">AI</div>
+                        <strong>On-device AI that does something useful.</strong>
+                        <p>Semantic search, duplicate review, and photo grouping are part of the product story, not decorative marketing language.</p>
+                    </article>
+                    <article class="glass-card">
+                        <div class="card-kicker">Safe</div>
+                        <strong>Review-first by default.</strong>
+                        <p>The app helps you make decisions faster without pretending it should make them for you.</p>
+                    </article>
+                    <article class="glass-card">
+                        <div class="card-kicker">Private</div>
+                        <strong>No cloud upload required for core AI cleanup flows.</strong>
+                        <p>Your photo library, videos, and contacts stay on your device while the app analyzes what can be reviewed.</p>
+                    </article>
+                    <article class="glass-card">
+                        <div class="card-kicker">Native</div>
+                        <strong>Designed to feel at home on iPhone.</strong>
+                        <p>Clear hierarchy, calm visuals, and direct language make the product feel trustworthy before you ever install it.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="page-shell trust-panel">
+                <div class="section-header">
+                    <div class="section-label">Privacy, Permissions, Safety</div>
+                    <h2>Private by design. Safe by default.</h2>
+                    <p class="section-copy">
+                        Cleaner apps can feel risky. This section should remove that tension before a user ever taps
+                        download by clearly explaining what the app accesses, why it needs it, and what it will never do.
+                    </p>
+                </div>
+
+                <div class="trust-grid">
+                    <article class="glass-card">
+                        <strong>Photos permission</strong>
+                        <p>Used to analyze your library, group duplicates and similar shots, detect screenshots, and support on-device search.</p>
+                    </article>
+                    <article class="glass-card">
+                        <strong>Contacts permission</strong>
+                        <p>Only needed if you choose to use contacts cleanup. You do not need to grant it for photo and storage features.</p>
+                    </article>
+                    <article class="glass-card">
+                        <strong>Deletion safety</strong>
+                        <p>Nothing is removed automatically. Every cleanup suggestion is reviewed first inside the app.</p>
+                    </article>
+                    <article class="glass-card">
+                        <strong>Privacy model</strong>
+                        <p>All AI processing happens on-device. No cloud uploads. No tracking. No account required to get started.</p>
+                    </article>
+                </div>
+
+                <div class="meta-grid">
+                    <article class="meta-card">
+                        <strong>Supported devices</strong>
+                        <p>iPhone only. Requires iOS 17 or later.</p>
+                    </article>
+                    <article class="meta-card">
+                        <strong>Billing</strong>
+                        <p>Subscriptions are handled by Apple through the App Store.</p>
+                    </article>
+                    <article class="meta-card">
+                        <strong>Try before paying</strong>
+                        <p>Free users can scan and preview results before upgrading.</p>
+                    </article>
+                    <article class="meta-card">
+                        <strong>Need help?</strong>
+                        <p><a href="./support/" style="color:#ffffff;text-decoration:underline;">Visit support</a> or review the <a href="./privacy/" style="color:#ffffff;text-decoration:underline;">privacy policy</a>.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="page-shell">
+                <div class="section-header centered">
+                    <div class="section-label">Pricing</div>
+                    <h2>Start free. Upgrade only if you want unlimited cleanup.</h2>
+                    <p class="section-copy">
+                        The goal is to let people understand the app before asking them to pay. Free is for scanning
+                        and evaluating. Premium is for unlimited use when the product is already earning trust.
+                    </p>
+                </div>
+
+                <div class="pricing-grid">
+                    <article class="pricing-card">
+                        <div class="plan-name">Free</div>
+                        <div class="plan-price">$0</div>
+                        <div class="plan-period">Start here</div>
+                        <ul class="plan-list">
+                            <li>3 dashboard scans per day</li>
+                            <li>Preview all cleanup results</li>
+                            <li>Limited semantic search preview</li>
+                            <li>1 video action per day</li>
+                        </ul>
+                    </article>
+
+                    <article class="pricing-card">
+                        <div class="plan-name">Premium Monthly</div>
+                        <div class="plan-price">$3.99</div>
+                        <div class="plan-period">per month</div>
+                        <ul class="plan-list">
+                            <li>Unlimited scans and cleanup actions</li>
+                            <li>Unlimited AI semantic search</li>
+                            <li>Full duplicate and similar-photo cleanup</li>
+                            <li>Video compression and contacts cleanup</li>
+                        </ul>
+                    </article>
+
+                    <article class="pricing-card featured">
+                        <div class="pricing-badge">Best value</div>
+                        <div class="plan-name">Premium Yearly</div>
+                        <div class="plan-price">$19.99</div>
+                        <div class="plan-period">per year</div>
+                        <ul class="plan-list">
+                            <li>Everything in Premium Monthly</li>
+                            <li>Lower annual cost for regular cleanup</li>
+                            <li>Managed through the App Store</li>
+                            <li>Ideal if StorageCleaner becomes part of your routine</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <p class="pricing-footnote">
+                    Prices shown are the current U.S. App Store list prices and may vary by region. Premium subscriptions
+                    are handled by Apple. Free users can scan and preview results before subscribing.
+                </p>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="page-shell">
+                <div class="section-header centered">
+                    <div class="section-label">FAQ</div>
+                    <h2>Questions users ask before they download.</h2>
+                    <p class="section-copy">
+                        Keep the final objections small, clear, and honest. The answers below are designed to reduce hesitation without overpromising.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <details>
+                        <summary>Does StorageCleaner upload my photos or contacts?</summary>
+                        <div class="faq-answer">
+                            No. The landing page and product positioning are built around on-device AI processing. Your library stays on your iPhone rather than being uploaded to a cloud service for analysis.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Will the app delete anything automatically?</summary>
+                        <div class="faq-answer">
+                            No. StorageCleaner follows a review-before-delete workflow. You scan, inspect the results, and decide what to remove.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>What can I do for free?</summary>
+                        <div class="faq-answer">
+                            Free users can run dashboard scans, preview cleanup suggestions, try limited semantic search, and test whether the app is useful before upgrading.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>What does Premium unlock?</summary>
+                        <div class="faq-answer">
+                            Premium unlocks unlimited semantic search, full duplicate and similar-photo cleanup, video compression, contacts cleanup, and unlimited scans and actions.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Why does the app need Photos and Contacts permissions?</summary>
+                        <div class="faq-answer">
+                            Photos access powers storage analysis, duplicate and similar-photo review, screenshot cleanup, blurry photo detection, video workflows, and on-device search. Contacts access is only needed if you choose to use contacts cleanup.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Which devices are supported?</summary>
+                        <div class="faq-answer">
+                            StorageCleaner is built for iPhone and currently requires iOS 17 or later.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Do I need an account to use it?</summary>
+                        <div class="faq-answer">
+                            No account is required to get started. Billing, if you upgrade, is handled through Apple.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="page-shell">
+                <div class="cta-panel">
+                    <div class="section-label">Final Step</div>
+                    <h2>Make space for what matters.</h2>
+                    <p>
+                        Try StorageCleaner for free, see what your iPhone is holding onto, and decide from there.
+                        It is designed to feel safe before it feels powerful: on-device AI, no cloud uploads, no account required, review before delete.
+                    </p>
+                    <div class="button-row">
+                        <a class="button button-primary" href="https://apps.apple.com/app/id6761749597">Download Free on the App Store</a>
+                        <a class="button button-quiet" href="./privacy/">Read the privacy policy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="./support/">Support</a>
+            <a href="./privacy/">Privacy Policy</a>
+            <a href="./terms/">Terms of Service</a>
+            <a href="mailto:mesikaeliran@gmail.com">Contact</a>
         </div>
-    </div>
-</section>
+        <span>&copy; 2026 StorageCleaner. All rights reserved.</span>
+    </footer>
 
-<!-- Pricing -->
-<section class="pricing">
-    <h2>Simple pricing</h2>
-    <p>Try for free. Upgrade when you're ready.</p>
-    <div class="price-cards">
-        <div class="price-card">
-            <div class="price-label">Free</div>
-            <div class="price-amount">$0</div>
-            <div class="price-period">forever</div>
-            <ul class="price-features">
-                <li>3 dashboard scans per day</li>
-                <li>Preview all cleanup results</li>
-                <li>Limited semantic search preview</li>
-                <li>1 video action per day</li>
-            </ul>
+    <a class="mobile-download" href="https://apps.apple.com/app/id6761749597" aria-label="Download StorageCleaner on the App Store">
+        <div>
+            <strong>Download StorageCleaner</strong>
+            <span>Free to start. Review before delete.</span>
         </div>
-        <div class="price-card featured">
-            <div class="price-label">Premium</div>
-            <div class="price-amount">$19.99</div>
-            <div class="price-period">per year ($3.99/month)</div>
-            <ul class="price-features">
-                <li>Unlimited AI Semantic Search</li>
-                <li>Full Duplicate & Similar Detection</li>
-                <li>Video Compression</li>
-                <li>Contacts Cleanup</li>
-                <li>Unlimited scans & actions</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- Bottom CTA -->
-<section class="cta-bottom">
-    <h2>Ready to free up space?</h2>
-    <p>Download StorageCleaner and see how much space you can reclaim — for free.</p>
-    <a class="cta-btn" href="https://apps.apple.com/app/id6761749597">Download on the App Store</a>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-links">
-        <a href="./support/">Support</a>
-        <a href="./privacy/">Privacy Policy</a>
-        <a href="./terms/">Terms of Service</a>
-        <a href="mailto:mesikaeliran@gmail.com">Contact</a>
-    </div>
-    <span class="footer-copy">&copy; 2026 StorageCleaner. All rights reserved.</span>
-</footer>
-
+        <span class="button button-primary" style="width:auto;padding:12px 16px;">App Store</span>
+    </a>
 </body>
 </html>
