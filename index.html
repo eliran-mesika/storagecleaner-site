@@ -272,18 +272,19 @@
             height: 74%;
             border-radius: 42px;
             background:
-                radial-gradient(circle at top, rgba(10, 102, 255, 0.26), transparent 52%),
-                linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(225, 236, 255, 0.64));
+                radial-gradient(circle at top, rgba(82, 124, 255, 0.28), transparent 52%),
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.16), transparent 48%),
+                linear-gradient(180deg, rgba(4, 16, 34, 0.96), rgba(13, 31, 70, 0.86));
             filter: blur(2px);
         }
 
         .phone-frame {
             position: relative;
-            background: rgba(255, 255, 255, 0.68);
-            border: 1px solid rgba(255, 255, 255, 0.84);
+            background: rgba(6, 18, 40, 0.72);
+            border: 1px solid rgba(129, 161, 255, 0.24);
             border-radius: 38px;
             padding: 14px;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 30px 80px rgba(5, 15, 34, 0.32), 0 0 42px rgba(55, 101, 255, 0.16);
             backdrop-filter: blur(20px);
         }
 
@@ -404,8 +405,8 @@
         .shot-card img {
             width: 100%;
             border-radius: 26px;
-            background: #f4f7fb;
-            box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+            background: #071429;
+            box-shadow: inset 0 0 0 1px rgba(125, 168, 255, 0.18);
         }
 
         .shot-card h3 {
@@ -1056,7 +1057,7 @@
                         <img src="./assets/screenshots/cleanup.png" alt="StorageCleaner cleanup review showing grouped suggestions">
                     </div>
                     <div class="phone-frame phone-cleanup">
-                        <img src="./assets/screenshots/cleanup.png" alt="StorageCleaner cleanup review showing duplicates and similar photos">
+                        <img src="./assets/screenshots/search.png" alt="StorageCleaner video review showing large video cleanup options">
                     </div>
                     <div class="floating-note">
                         <strong>Nothing is removed automatically.</strong>
@@ -1087,14 +1088,14 @@
                     <div class="proof-stack">
                         <article class="shot-card">
                             <img src="./assets/screenshots/cleanup.png" alt="Cleanup review screenshot with duplicates and similar photos" loading="lazy">
-                            <h3>Review suggestions before you delete.</h3>
-                            <p>Duplicates, similar photos, screenshots, and blurry shots are grouped into clear review flows.</p>
+                            <h3>Choose what stays before cleanup.</h3>
+                            <p>Similar photos are reviewed first so cleanup decisions stay visible and deliberate.</p>
                         </article>
 
                         <article class="shot-card">
-                            <img src="./assets/screenshots/cleanup.png" alt="Cleanup review screenshot showing grouped review flows" loading="lazy">
-                            <h3>Resume and review cleanup work safely.</h3>
-                            <p>The current update keeps cleanup focused on visible review states, saved scan progress, and clear recovery when long scans are interrupted.</p>
+                            <img src="./assets/screenshots/search.png" alt="Video cleanup screenshot with review-first compression guidance" loading="lazy">
+                            <h3>Large videos stay under control.</h3>
+                            <p>Review video storage and compression opportunities before replacing an original.</p>
                         </article>
                     </div>
                 </div>
