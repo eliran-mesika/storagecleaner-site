@@ -298,7 +298,7 @@
             z-index: 2;
         }
 
-        .phone-search {
+        .phone-photos {
             position: absolute;
             width: 214px;
             top: 52px;
@@ -307,7 +307,7 @@
             z-index: 1;
         }
 
-        .phone-cleanup {
+        .phone-videos {
             position: absolute;
             width: 226px;
             left: -12px;
@@ -830,11 +830,11 @@
                 margin-top: 10px;
             }
 
-            .phone-search {
+            .phone-photos {
                 right: 10px;
             }
 
-            .phone-cleanup {
+            .phone-videos {
                 left: 8px;
             }
         }
@@ -869,12 +869,12 @@
                 width: min(100%, 320px);
             }
 
-            .phone-search {
+            .phone-photos {
                 width: 185px;
                 top: 28px;
             }
 
-            .phone-cleanup {
+            .phone-videos {
                 width: 194px;
                 left: 4px;
                 bottom: 26px;
@@ -951,13 +951,13 @@
                 width: 260px;
             }
 
-            .phone-search {
+            .phone-photos {
                 width: 150px;
                 right: 0;
                 top: 46px;
             }
 
-            .phone-cleanup {
+            .phone-videos {
                 width: 160px;
                 left: 0;
                 bottom: 72px;
@@ -1051,13 +1051,22 @@
                 <div class="hero-visual" aria-label="StorageCleaner product screenshots">
                     <div class="hero-glow"></div>
                     <div class="phone-frame phone-main">
-                        <img src="./assets/screenshots/dashboard.png" alt="StorageCleaner dashboard showing device storage and scan action">
+                        <picture>
+                            <source srcset="./assets/screenshots/dashboard-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="./assets/screenshots/dashboard-light.png" alt="StorageCleaner dashboard showing video, photo, and contacts cleanup categories">
+                        </picture>
                     </div>
-                    <div class="phone-frame phone-search">
-                        <img src="./assets/screenshots/cleanup.png" alt="StorageCleaner cleanup review showing grouped suggestions">
+                    <div class="phone-frame phone-photos">
+                        <picture>
+                            <source srcset="./assets/screenshots/photos-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="./assets/screenshots/photos-light.png" alt="StorageCleaner photos cleanup categories">
+                        </picture>
                     </div>
-                    <div class="phone-frame phone-cleanup">
-                        <img src="./assets/screenshots/search.png" alt="StorageCleaner video review showing large video cleanup options">
+                    <div class="phone-frame phone-videos">
+                        <picture>
+                            <source srcset="./assets/screenshots/videos-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="./assets/screenshots/videos-light.png" alt="StorageCleaner videos review with compression and delete actions">
+                        </picture>
                     </div>
                     <div class="floating-note">
                         <strong>Nothing is removed automatically.</strong>
@@ -1080,22 +1089,40 @@
 
                 <div class="proof-grid">
                     <article class="shot-card">
-                        <img src="./assets/screenshots/dashboard.png" alt="Dashboard screenshot with available storage and scan button" loading="eager">
+                        <picture>
+                            <source srcset="./assets/screenshots/dashboard-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="./assets/screenshots/dashboard-light.png" alt="Dashboard screenshot with cleanup categories and storage status" loading="eager">
+                        </picture>
                         <h3>See where your storage is going.</h3>
-                        <p>Start with a clear storage dashboard so you know what is worth reviewing before you touch anything.</p>
+                        <p>Start with a clear dashboard that prioritizes videos, photos, and contacts so the next cleanup step is obvious.</p>
                     </article>
 
                     <div class="proof-stack">
                         <article class="shot-card">
-                            <img src="./assets/screenshots/cleanup.png" alt="Cleanup review screenshot with duplicates and similar photos" loading="lazy">
-                            <h3>Choose what stays before cleanup.</h3>
-                            <p>Similar photos are reviewed first so cleanup decisions stay visible and deliberate.</p>
+                            <picture>
+                                <source srcset="./assets/screenshots/photos-dark.png" media="(prefers-color-scheme: dark)">
+                                <img src="./assets/screenshots/photos-light.png" alt="Photos cleanup screenshot with similar shots, low sharpness, and screenshots categories" loading="lazy">
+                            </picture>
+                            <h3>Review photo cleanup by category.</h3>
+                            <p>Similar shots, low-sharpness photos, and screenshots are separated into review-first flows.</p>
                         </article>
 
                         <article class="shot-card">
-                            <img src="./assets/screenshots/search.png" alt="Video cleanup screenshot with review-first compression guidance" loading="lazy">
+                            <picture>
+                                <source srcset="./assets/screenshots/videos-dark.png" media="(prefers-color-scheme: dark)">
+                                <img src="./assets/screenshots/videos-light.png" alt="Video cleanup screenshot with review-first compression guidance" loading="lazy">
+                            </picture>
                             <h3>Large videos stay under control.</h3>
                             <p>Review video storage and compression opportunities before replacing an original.</p>
+                        </article>
+
+                        <article class="shot-card">
+                            <picture>
+                                <source srcset="./assets/screenshots/contacts-dark.png" media="(prefers-color-scheme: dark)">
+                                <img src="./assets/screenshots/contacts-light.png" alt="Contacts cleanup screenshot with duplicate and incomplete contact review" loading="lazy">
+                            </picture>
+                            <h3>Contacts cleanup stays separate.</h3>
+                            <p>Duplicate and incomplete contacts are reviewed only when you choose to use that flow.</p>
                         </article>
                     </div>
                 </div>
