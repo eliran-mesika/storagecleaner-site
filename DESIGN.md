@@ -2,12 +2,13 @@
 
 ## Direction
 
-Use a polished iPhone utility feel: calm, trustworthy, blue-accented, screenshot-led, and review-before-delete focused.
+Use a polished iPhone utility feel: trustworthy, blue-accented, review-before-delete focused, and allowed to use controlled storage-panic campaign imagery around the calmer product proof.
 
 ## Rules
 
 - Keep the real app screenshots unchanged unless a new App Store-approved screenshot set replaces them.
 - Use the current app icon from the app repo for the website icon, favicon, and brand surfaces.
+- Use chaotic campaign imagery only as website marketing material. Keep the actual product proof screenshot-led and clearly separate from generated or campaign frames.
 - Keep navigation visible and practical: App, Blog, Support, Privacy, and Terms should be reachable without hunting.
 - Use native HTML links, details, dialogs, and popovers before custom JavaScript.
 - Put the strongest product proof above marketing copy: real screenshots, clear privacy claims, and review-first safety language.

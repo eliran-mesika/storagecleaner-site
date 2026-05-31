@@ -16,8 +16,8 @@
     >
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://storagecleaner.mesikalabs.com/">
-    <meta property="og:image" content="https://storagecleaner.mesikalabs.com/assets/app/icon.png">
-    <meta property="og:image:alt" content="StorageCleaner app icon">
+    <meta property="og:image" content="https://storagecleaner.mesikalabs.com/assets/marketing/storagecleaner-chaos-hero.jpg">
+    <meta property="og:image:alt" content="StorageCleaner app shown on an iPhone during a busy storage cleanup moment">
     <link rel="canonical" href="https://storagecleaner.mesikalabs.com/">
     <link rel="icon" href="/assets/app/icon.png" type="image/png">
     <link rel="apple-touch-icon" href="/assets/app/icon.png">
@@ -387,6 +387,69 @@
             color: var(--muted);
             font-size: 0.9rem;
             line-height: 1.5;
+        }
+
+        .hero-visual-chaos {
+            min-height: 620px;
+        }
+
+        .chaos-frame {
+            position: relative;
+            z-index: 2;
+            width: min(100%, 560px);
+            margin: 0;
+            overflow: hidden;
+            border: 1px solid rgba(129, 161, 255, 0.24);
+            border-radius: 34px;
+            background: rgba(6, 18, 40, 0.72);
+            box-shadow: 0 30px 80px rgba(5, 15, 34, 0.30), 0 0 42px rgba(55, 101, 255, 0.16);
+        }
+
+        .chaos-frame img {
+            display: block;
+            width: 100%;
+        }
+
+        .campaign-proof {
+            padding: 32px 0 42px;
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .campaign-card {
+            margin: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            background: var(--surface);
+            box-shadow: var(--shadow-md);
+        }
+
+        .campaign-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 405 / 720;
+            object-fit: cover;
+        }
+
+        .campaign-card figcaption {
+            display: grid;
+            gap: 8px;
+            padding: 18px;
+        }
+
+        .campaign-card strong {
+            font-size: 1.04rem;
+        }
+
+        .campaign-card span {
+            color: var(--muted);
+            line-height: 1.58;
         }
 
         section {
@@ -1047,13 +1110,18 @@
             .trust-grid,
             .pricing-grid,
             .meta-grid,
-            .resource-panel {
+            .resource-panel,
+            .campaign-grid {
                 grid-template-columns: 1fr;
             }
 
             .hero-visual {
                 min-height: 620px;
                 margin-top: 10px;
+            }
+
+            .hero-visual-chaos {
+                min-height: auto;
             }
 
             .phone-photos {
@@ -1324,21 +1392,51 @@
                     </p>
                 </div>
 
-                <div class="hero-visual">
+                <div class="hero-visual hero-visual-chaos">
                     <div class="hero-glow"></div>
-                    <div class="phone-frame phone-main">
-                        <img src="./assets/screenshots/dashboard-dark.png" alt="StorageCleaner dashboard showing video, photo, and contacts cleanup categories" width="1320" height="2868" fetchpriority="high">
-                    </div>
-                    <div class="phone-frame phone-photos">
-                        <img src="./assets/screenshots/photos-dark.png" alt="StorageCleaner Photos screen with review-ready cleanup categories" width="1320" height="2868">
-                    </div>
-                    <div class="phone-frame phone-videos">
-                        <img src="./assets/screenshots/videos-dark.png" alt="StorageCleaner videos review with compression and delete actions" width="1320" height="2868">
-                    </div>
+                    <figure class="chaos-frame">
+                        <img src="./assets/marketing/storagecleaner-chaos-hero.jpg" alt="StorageCleaner app shown on an iPhone during a busy storage cleanup moment" width="1600" height="1600" fetchpriority="high">
+                    </figure>
                     <div class="floating-note">
                         <strong>Nothing is removed automatically.</strong>
                         <p>Scan first, review suggestions, then choose what you want to keep or remove.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="campaign-proof" aria-labelledby="campaign-title">
+            <div class="page-shell">
+                <div class="section-header">
+                    <div class="section-label">Storage Panic Energy</div>
+                    <h2 id="campaign-title">The mess is chaotic. The cleanup should not be.</h2>
+                    <p class="section-copy">
+                        More real-world energy, less sterile utility brochure. These campaign frames show the actual
+                        "why is my iPhone full again" moment, while the product proof below stays screenshot-led and review-first.
+                    </p>
+                </div>
+                <div class="campaign-grid" aria-label="StorageCleaner campaign frames">
+                    <figure class="campaign-card">
+                        <img src="./assets/marketing/storage-panic-poster.png" alt="Person reacting to iPhone storage cleanup stress" width="405" height="720" loading="lazy">
+                        <figcaption>
+                            <strong>Storage panic.</strong>
+                            <span>The moment before panic-deleting 400 photos like a sleep-deprived accountant.</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="campaign-card">
+                        <img src="./assets/marketing/street-cleanup-poster.png" alt="Person checking iPhone storage cleanup on the street" width="405" height="720" loading="lazy">
+                        <figcaption>
+                            <strong>Phone full, again.</strong>
+                            <span>Somehow the screenshots multiplied. Nature is healing. Your storage is not.</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="campaign-card">
+                        <img src="./assets/marketing/review-cleanup-poster.png" alt="StorageCleaner campaign frame about reviewing cleanup suggestions" width="405" height="720" loading="lazy">
+                        <figcaption>
+                            <strong>Review first.</strong>
+                            <span>Still the point: see the clutter, make the call, keep the good stuff.</span>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
