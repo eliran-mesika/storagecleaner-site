@@ -7,6 +7,8 @@ This repository intentionally contains only static website content:
 - `privacy/index.html`
 - `support/index.html`
 - `terms/index.html`
+- `blog/index.html`
+- `blog/feed.json`
 - `robots.txt`
 - `sitemap.xml`
 

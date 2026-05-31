@@ -17,5 +17,5 @@
 ## Validation
 
 - Local smoke test: `python3 -m http.server 8088 --bind 127.0.0.1`
-- Check `/`, `/support/`, `/privacy/`, `/terms/`, `/robots.txt`, and `/sitemap.xml`.
+- Check `/`, `/support/`, `/privacy/`, `/terms/`, `/blog/`, `/blog/feed.json`, `/robots.txt`, and `/sitemap.xml`.
 - Hosted checks after deploy: `curl -I -L https://storagecleaner.mesikalabs.com/ https://storagecleaner.mesikalabs.com/robots.txt https://storagecleaner.mesikalabs.com/sitemap.xml`
