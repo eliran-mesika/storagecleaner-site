@@ -65,6 +65,7 @@
         img {
             display: block;
             max-width: 100%;
+            height: auto;
         }
 
         a {
@@ -138,10 +139,13 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            border: 0;
             border-radius: 999px;
             padding: 14px 22px;
             font-weight: 600;
             font-size: 0.98rem;
+            font-family: inherit;
+            cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
         }
 
@@ -166,6 +170,7 @@
         }
 
         .button-quiet {
+            background: transparent;
             font-size: 0.94rem;
             color: var(--muted);
             font-weight: 600;
@@ -577,6 +582,23 @@
             color: rgba(226, 232, 240, 0.84);
         }
 
+        .trust-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .trust-actions .button-secondary {
+            background: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+        }
+
+        .trust-actions .button-quiet {
+            color: rgba(226, 232, 240, 0.86);
+        }
+
         .trust-panel .glass-card {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.10);
@@ -589,6 +611,11 @@
 
         .trust-panel .glass-card p {
             color: rgba(226, 232, 240, 0.82);
+        }
+
+        .trust-link {
+            color: #ffffff;
+            text-decoration: underline;
         }
 
         .meta-card {
@@ -783,6 +810,82 @@
             color: var(--accent);
         }
 
+        .native-popover {
+            width: min(440px, calc(100vw - 32px));
+            margin: auto;
+            padding: 24px;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        [popover] {
+            display: none;
+        }
+
+        [popover]:is(:popover-open, [data-popover-open="true"]) {
+            display: block;
+        }
+
+        .native-popover h3,
+        .native-dialog h2 {
+            font-size: 1.35rem;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+        }
+
+        .native-popover p,
+        .native-dialog p {
+            margin-top: 10px;
+            color: var(--muted);
+            line-height: 1.66;
+        }
+
+        .native-popover ul,
+        .native-dialog ul {
+            display: grid;
+            gap: 10px;
+            margin-top: 16px;
+            padding-left: 20px;
+            color: var(--muted);
+            line-height: 1.58;
+        }
+
+        .native-popover .button-row,
+        .native-dialog .button-row {
+            margin-top: 22px;
+        }
+
+        .native-dialog {
+            width: min(720px, calc(100vw - 32px));
+            max-height: min(760px, calc(100vh - 32px));
+            margin: auto;
+            padding: 0;
+            color: var(--text);
+            background: transparent;
+            border: 0;
+        }
+
+        .native-dialog::backdrop {
+            background: rgba(6, 18, 40, 0.52);
+            backdrop-filter: blur(10px);
+        }
+
+        .native-dialog-shell {
+            padding: 28px;
+            overflow: auto;
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .native-dialog:not([open]):not([data-dialog-open="true"]) {
+            display: none;
+        }
+
         .mobile-download {
             position: fixed;
             left: 16px;
@@ -812,6 +915,14 @@
             margin-top: 3px;
             color: var(--muted);
             font-size: 0.83rem;
+        }
+
+        .mobile-download .button-primary {
+            display: inline-flex;
+            width: auto;
+            margin-top: 0;
+            padding: 12px 16px;
+            color: #ffffff;
         }
 
         @media (max-width: 1080px) {
@@ -921,6 +1032,7 @@
             }
 
             .hero-actions .button-row,
+            .trust-actions,
             .cta-panel .button-row {
                 flex-direction: column;
                 align-items: stretch;
@@ -995,7 +1107,7 @@
     <header class="topbar">
         <div class="topbar-inner">
             <a class="brand" href="#top" aria-label="StorageCleaner home">
-                <img class="brand-icon" src="./assets/app/icon.png" alt="StorageCleaner app icon">
+                <img class="brand-icon" src="./assets/app/icon.png" alt="StorageCleaner app icon" width="1024" height="1024">
                 <div class="brand-copy">
                     <div class="brand-name">StorageCleaner</div>
                     <div class="brand-subtitle">Privacy-first storage cleanup for iPhone</div>
@@ -1048,16 +1160,16 @@
                     </p>
                 </div>
 
-                <div class="hero-visual" aria-label="StorageCleaner product screenshots">
+                <div class="hero-visual">
                     <div class="hero-glow"></div>
                     <div class="phone-frame phone-main">
-                        <img src="./assets/screenshots/dashboard-dark.png" alt="StorageCleaner dashboard showing video, photo, and contacts cleanup categories">
+                        <img src="./assets/screenshots/dashboard-dark.png" alt="StorageCleaner dashboard showing video, photo, and contacts cleanup categories" width="1320" height="2868" fetchpriority="high">
                     </div>
                     <div class="phone-frame phone-photos">
-                        <img src="./assets/screenshots/photos-dark.png" alt="StorageCleaner Photos screen with review-ready cleanup categories">
+                        <img src="./assets/screenshots/photos-dark.png" alt="StorageCleaner Photos screen with review-ready cleanup categories" width="1320" height="2868">
                     </div>
                     <div class="phone-frame phone-videos">
-                        <img src="./assets/screenshots/videos-dark.png" alt="StorageCleaner videos review with compression and delete actions">
+                        <img src="./assets/screenshots/videos-dark.png" alt="StorageCleaner videos review with compression and delete actions" width="1320" height="2868">
                     </div>
                     <div class="floating-note">
                         <strong>Nothing is removed automatically.</strong>
@@ -1080,26 +1192,26 @@
 
                 <div class="proof-grid">
                     <article class="shot-card">
-                        <img src="./assets/screenshots/dashboard-dark.png" alt="Dashboard screenshot with cleanup categories and storage status" loading="eager">
+                        <img src="./assets/screenshots/dashboard-dark.png" alt="Dashboard screenshot with cleanup categories and storage status" width="1320" height="2868" loading="eager">
                         <h3>See where your storage is going.</h3>
                         <p>Start with a clear dashboard that prioritizes videos, photos, and contacts so the next cleanup step is obvious.</p>
                     </article>
 
                     <div class="proof-stack">
                         <article class="shot-card">
-                            <img src="./assets/screenshots/photos-dark.png" alt="Photos cleanup screenshot with Similar Photos and review-ready category cards" loading="lazy">
+                            <img src="./assets/screenshots/photos-dark.png" alt="Photos cleanup screenshot with Similar Photos and review-ready category cards" width="1320" height="2868" loading="lazy">
                             <h3>Review photo cleanup by category.</h3>
                             <p>Similar Photos, low-sharpness photos, and other cleanup categories are separated into review-first flows.</p>
                         </article>
 
                         <article class="shot-card">
-                            <img src="./assets/screenshots/videos-dark.png" alt="Video cleanup screenshot with review-first compression guidance" loading="lazy">
+                            <img src="./assets/screenshots/videos-dark.png" alt="Video cleanup screenshot with review-first compression guidance" width="1320" height="2868" loading="lazy">
                             <h3>Large videos stay under control.</h3>
                             <p>Review video storage and compression opportunities before replacing an original.</p>
                         </article>
 
                         <article class="shot-card">
-                            <img src="./assets/screenshots/contacts-dark.png" alt="Contacts cleanup screenshot with duplicate and incomplete contact review" loading="lazy">
+                            <img src="./assets/screenshots/contacts-dark.png" alt="Contacts cleanup screenshot with duplicate and incomplete contact review" width="1320" height="2868" loading="lazy">
                             <h3>Contacts cleanup stays separate.</h3>
                             <p>Duplicate and incomplete contacts are reviewed only when you choose to use that flow.</p>
                         </article>
@@ -1229,6 +1341,30 @@
                     </p>
                 </div>
 
+                <div class="trust-actions">
+                    <button class="button button-secondary" type="button" data-dialog-open="safety-dialog">
+                        Review safety model
+                    </button>
+                    <button
+                        class="button button-quiet"
+                        type="button"
+                        popovertarget="permissions-popover"
+                        data-popover-toggle="permissions-popover"
+                    >
+                        Permission details
+                    </button>
+                </div>
+
+                <div class="native-popover" id="permissions-popover" popover="auto" aria-labelledby="permissions-popover-title">
+                    <h3 id="permissions-popover-title">Permissions stay task-specific.</h3>
+                    <p>StorageCleaner can still be useful before every permission is granted.</p>
+                    <ul>
+                        <li>Photos access powers photo, screenshot, and video review.</li>
+                        <li>Contacts access is requested only for contacts cleanup.</li>
+                        <li>You can revoke permissions later in iOS Settings.</li>
+                    </ul>
+                </div>
+
                 <div class="trust-grid">
                     <article class="glass-card">
                         <strong>Photos permission</strong>
@@ -1263,7 +1399,7 @@
                     </article>
                     <article class="meta-card">
                         <strong>Need help?</strong>
-                        <p><a href="./support/" style="color:#ffffff;text-decoration:underline;">Visit support</a> or review the <a href="./privacy/" style="color:#ffffff;text-decoration:underline;">privacy policy</a>.</p>
+                        <p><a class="trust-link" href="./support/">Visit support</a> or review the <a class="trust-link" href="./privacy/">privacy policy</a>.</p>
                     </article>
                 </div>
             </div>
@@ -1330,7 +1466,7 @@
                     <details>
                         <summary>Why do I still need to empty Recently Deleted?</summary>
                         <div class="faq-answer">
-                            iOS keeps deleted photos and videos in Photos > Recently Deleted for a recovery period. To finish freeing space, open Photos > Recently Deleted, choose Select, then Delete All.
+                            iOS keeps deleted photos and videos in Photos &gt; Recently Deleted for a recovery period. To finish freeing space, open Photos &gt; Recently Deleted, choose Select, then Delete All.
                         </div>
                     </details>
 
@@ -1390,6 +1526,25 @@
         </section>
     </main>
 
+    <dialog class="native-dialog" id="safety-dialog" aria-labelledby="safety-dialog-title" aria-describedby="safety-dialog-summary" closedby="any">
+        <div class="native-dialog-shell">
+            <h2 id="safety-dialog-title">StorageCleaner safety model</h2>
+            <p id="safety-dialog-summary">
+                The product is designed around review-first cleanup, local processing, and reversible photo deletion behavior.
+            </p>
+            <ul>
+                <li>AI analysis runs on-device for core cleanup flows.</li>
+                <li>Cleanup suggestions are grouped for review before deletion or compression.</li>
+                <li>Photos and videos removed from the library still pass through Apple's Recently Deleted recovery flow.</li>
+                <li>No account is required to start scanning and reviewing storage opportunities.</li>
+            </ul>
+            <form method="dialog" class="button-row">
+                <button class="button button-primary" value="confirmed" type="submit">Got it</button>
+                <a class="button button-secondary" href="./privacy/">Read privacy policy</a>
+            </form>
+        </div>
+    </dialog>
+
     <footer class="footer">
         <div class="footer-links">
             <a href="./support/">Support</a>
@@ -1405,7 +1560,86 @@
             <strong>Download StorageCleaner</strong>
             <span>Free to start. Review before delete.</span>
         </div>
-        <span class="button button-primary" style="width:auto;padding:12px 16px;">App Store</span>
+        <span class="button button-primary">App Store</span>
     </a>
+
+    <script>
+        (() => {
+            const supportsDialog = "HTMLDialogElement" in window && "showModal" in HTMLDialogElement.prototype;
+            const supportsPopover = "popover" in HTMLElement.prototype;
+
+            document.querySelectorAll("[data-dialog-open]").forEach((button) => {
+                const dialog = document.getElementById(button.dataset.dialogOpen);
+
+                if (!dialog) {
+                    return;
+                }
+
+                button.addEventListener("click", () => {
+                    if (supportsDialog) {
+                        dialog.showModal();
+                    } else {
+                        dialog.setAttribute("data-dialog-open", "true");
+                        dialog.setAttribute("open", "");
+                    }
+                });
+
+                dialog.addEventListener("click", (event) => {
+                    if (event.target === dialog) {
+                        if (supportsDialog) {
+                            dialog.close();
+                        } else {
+                            dialog.removeAttribute("data-dialog-open");
+                            dialog.removeAttribute("open");
+                        }
+                    }
+                });
+            });
+
+            if (!supportsPopover) {
+                document.querySelectorAll("[data-popover-toggle]").forEach((button) => {
+                    const popover = document.getElementById(button.dataset.popoverToggle);
+
+                    if (!popover) {
+                        return;
+                    }
+
+                    button.setAttribute("aria-expanded", "false");
+
+                    button.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        const isOpen = popover.dataset.popoverOpen === "true";
+                        popover.dataset.popoverOpen = isOpen ? "false" : "true";
+                        button.setAttribute("aria-expanded", String(!isOpen));
+                    });
+                });
+
+                document.addEventListener("click", (event) => {
+                    document.querySelectorAll("[popover][data-popover-open='true']").forEach((popover) => {
+                        const toggle = document.querySelector(`[data-popover-toggle="${popover.id}"]`);
+
+                        if (popover.contains(event.target) || toggle?.contains(event.target)) {
+                            return;
+                        }
+
+                        popover.dataset.popoverOpen = "false";
+                        toggle?.setAttribute("aria-expanded", "false");
+                    });
+                });
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key !== "Escape") {
+                        return;
+                    }
+
+                    document.querySelectorAll("[popover][data-popover-open='true']").forEach((popover) => {
+                        const toggle = document.querySelector(`[data-popover-toggle="${popover.id}"]`);
+                        popover.dataset.popoverOpen = "false";
+                        toggle?.setAttribute("aria-expanded", "false");
+                    });
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
