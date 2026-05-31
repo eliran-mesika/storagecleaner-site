@@ -5,6 +5,7 @@
 - This repo is the static public site for StorageCleaner at `storagecleaner.mesikalabs.com`.
 - Keep the site aligned with the review-before-delete cleanup positioning.
 - Do not add claims about automatic deletion, cloud processing, or future paid gating unless the app repo and App Store metadata already support them.
+- Follow `DESIGN.md` for visual rules, current icon usage, navigation structure, and screenshot constraints.
 
 ## MesikaLabs Contact Points
 

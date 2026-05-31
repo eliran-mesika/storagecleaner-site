@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support — StorageCleaner</title>
+    <link rel="icon" href="/assets/app/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/app/icon.png">
     <style>
         :root {
             --bg: #ffffff;
@@ -38,9 +40,58 @@
         }
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-weight: 800;
+            text-decoration: none;
+        }
+        .brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-weight: 700;
+        }
+        @media (max-width: 560px) {
+            .site-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
+    <header class="site-header">
+        <a class="brand" href="../">
+            <img src="/assets/app/icon.png" alt="" width="1024" height="1024">
+            <span>StorageCleaner</span>
+        </a>
+        <nav aria-label="Support navigation">
+            <a href="../">App</a>
+            <a href="../blog/">Blog</a>
+            <a href="../support/">Support</a>
+            <a href="../privacy/">Privacy</a>
+            <a href="../terms/">Terms</a>
+        </nav>
+    </header>
+
     <h1>Support</h1>
     <p class="muted">StorageCleaner</p>
 
