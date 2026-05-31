@@ -422,6 +422,7 @@
         }
 
         .campaign-card {
+            position: relative;
             margin: 0;
             overflow: hidden;
             border: 1px solid var(--border);
@@ -430,11 +431,31 @@
             box-shadow: var(--shadow-md);
         }
 
-        .campaign-card img {
+        .campaign-card img,
+        .campaign-card video {
             display: block;
             width: 100%;
             aspect-ratio: 405 / 720;
             object-fit: cover;
+            background: #0d1b2a;
+        }
+
+        .campaign-card video {
+            cursor: pointer;
+        }
+
+        .video-chip {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 2;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.78);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            backdrop-filter: blur(10px);
         }
 
         .campaign-card figcaption {
@@ -1417,21 +1438,30 @@
                 </div>
                 <div class="campaign-grid" aria-label="StorageCleaner campaign frames">
                     <figure class="campaign-card">
-                        <img src="./assets/marketing/storage-panic-poster.png" alt="Person reacting to iPhone storage cleanup stress" width="405" height="720" loading="lazy">
+                        <video autoplay controls muted loop playsinline preload="metadata" poster="./assets/marketing/storage-panic-poster.png" aria-label="StorageCleaner storage panic campaign video with a person reacting to a full iPhone">
+                            <source src="./assets/marketing/storage-panic-skit.mp4#t=2" type="video/mp4">
+                        </video>
+                        <span class="video-chip">10-sec video</span>
                         <figcaption>
                             <strong>Storage panic.</strong>
                             <span>The moment before panic-deleting 400 photos like a sleep-deprived accountant.</span>
                         </figcaption>
                     </figure>
                     <figure class="campaign-card">
-                        <img src="./assets/marketing/street-cleanup-poster.png" alt="Person checking iPhone storage cleanup on the street" width="405" height="720" loading="lazy">
+                        <video autoplay controls muted loop playsinline preload="metadata" poster="./assets/marketing/street-cleanup-poster.png" aria-label="StorageCleaner street interview campaign video about iPhone storage cleanup">
+                            <source src="./assets/marketing/street-interview.mp4" type="video/mp4">
+                        </video>
+                        <span class="video-chip">10-sec video</span>
                         <figcaption>
                             <strong>Phone full, again.</strong>
                             <span>Somehow the screenshots multiplied. Nature is healing. Your storage is not.</span>
                         </figcaption>
                     </figure>
                     <figure class="campaign-card">
-                        <img src="./assets/marketing/review-cleanup-poster.png" alt="StorageCleaner campaign frame about reviewing cleanup suggestions" width="405" height="720" loading="lazy">
+                        <video autoplay controls muted loop playsinline preload="metadata" poster="./assets/marketing/review-cleanup-poster.png" aria-label="StorageCleaner review-first campaign video showing the app on a phone">
+                            <source src="./assets/marketing/demo-review.mp4#t=8" type="video/mp4">
+                        </video>
+                        <span class="video-chip">10-sec video</span>
                         <figcaption>
                             <strong>Review first.</strong>
                             <span>Still the point: see the clutter, make the call, keep the good stuff.</span>
