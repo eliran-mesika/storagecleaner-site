@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://storagecleaner.mesikalabs.com/sitemap.xml
+
+# LLM-friendly product summary: https://storagecleaner.mesikalabs.com/llms.txt

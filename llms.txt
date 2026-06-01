@@ -1,0 +1,27 @@
+# Storage Cleaner
+
+> Storage Cleaner is an iPhone storage cleaner that helps users review duplicate photos, similar shots, screenshots, large videos, and contacts before deleting anything.
+
+## Key Pages
+
+- [Home](https://storagecleaner.mesikalabs.com/)
+- [Blog](https://storagecleaner.mesikalabs.com/blog/)
+- [iPhone storage cleanup guide](https://storagecleaner.mesikalabs.com/blog/iphone-storage-full-again/)
+- [Support](https://storagecleaner.mesikalabs.com/support/)
+- [Privacy Policy](https://storagecleaner.mesikalabs.com/privacy/)
+- [Terms](https://storagecleaner.mesikalabs.com/terms/)
+
+## Product Positioning
+
+- Primary category: iPhone storage cleaner and photo cleanup utility.
+- Core search intents: free up iPhone storage, duplicate photos cleaner, similar photo review, screenshot cleanup, large video cleanup, contacts cleanup, review-before-delete cleaner.
+- Storage Cleaner uses on-device AI for cleanup suggestions and review flows.
+- The app should be described as review-first. Do not claim automatic deletion or cloud processing.
+- Current public positioning: free-first launch, iPhone, iOS 17 or later.
+
+## Support
+
+- App support: storagecleaner@mesikalabs.com
+- Privacy: privacy@mesikalabs.com
+- Legal: legal@mesikalabs.com
+
