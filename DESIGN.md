@@ -4,6 +4,8 @@
 
 Use a polished iPhone utility feel: trustworthy, blue-accented, review-before-delete focused, and allowed to use controlled storage-panic campaign imagery around the calmer product proof.
 
+This site follows the shared MesikaLabs public-site family language in `/Users/eliranmesika/Repos/mesikalabs-site/docs/design-language-system.md` for typography, legal-page chrome, spacing, accessibility, and compliance posture.
+
 ## Rules
 
 - Keep the real app screenshots unchanged unless a new App Store-approved screenshot set replaces them.
