@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — StorageCleaner</title>
-    <meta name="description" content="StorageCleaner privacy policy for Photos, Contacts, storage insights, on-device processing, permissions, purchases, and support.">
+    <meta name="description" content="StorageCleaner privacy policy for Photos, Contacts, optional Gmail Cleanup, storage insights, on-device processing, permissions, purchases, and support.">
     <link rel="canonical" href="https://storagecleaner.mesikalabs.com/privacy/">
     <link rel="icon" href="../assets/app/icon-192.png?v=20260531perf" type="image/png">
     <link rel="apple-touch-icon" href="../assets/app/icon-192.png?v=20260531perf">
@@ -28,11 +28,11 @@
     <main class="document">
         <p class="eyebrow">Privacy</p>
         <h1>Privacy Policy</h1>
-        <p class="lede">StorageCleaner processes your photos, contacts, and storage insights on your iPhone. No account is required, and your library is not uploaded to cloud servers for core AI analysis.</p>
-        <p class="meta">Effective Date: July 11, 2026</p>
+        <p class="lede">StorageCleaner processes photos, contacts, and storage insights on your iPhone. Optional Gmail Cleanup connects directly to Google only after you choose to sign in and grant access.</p>
+        <p class="meta">Effective Date: July 25, 2026</p>
 
         <div class="panel">
-            <p><strong>Short version:</strong> StorageCleaner is a review-first iPhone utility. Photos, videos, contacts, and local storage data are used to power cleanup features inside the app and are not uploaded for analytics. We use privacy-preserving product analytics to understand whether core app flows work. We do not sell personal data, use advertising SDKs, or track you across apps or websites.</p>
+            <p><strong>Short version:</strong> StorageCleaner is a review-first iPhone utility. Photos, videos, contacts, and local storage data are used to power cleanup features inside the app and are not uploaded for analytics. Optional Gmail Cleanup reads only the message metadata needed to show cleanup candidates and moves selected messages to Gmail Trash, never permanent deletion. We do not sell personal data, use advertising SDKs, or track you across apps or websites.</p>
         </div>
 
         <p>This Privacy Policy explains how StorageCleaner handles information when you use the app.</p>
@@ -43,34 +43,41 @@
             <li><strong>Photos library</strong> for duplicate review, similar photo grouping, screenshot cleanup, blurry photo review, video compression, and local cleanup analysis.</li>
             <li><strong>Contacts</strong> for duplicate or incomplete contact review.</li>
             <li><strong>Local device storage information</strong> to show storage breakdowns and reclaimable space.</li>
+            <li><strong>Gmail account metadata</strong>, only if you enable Gmail Cleanup, to find and review promotions, spam, large messages, and old unread mail. This can include sender, subject, date, labels, message size, and Google message identifiers. StorageCleaner does not request message bodies or download attachments for this feature.</li>
         </ul>
 
         <h2>2. How data is used</h2>
         <p>Data accessed by the app is used only to provide cleanup, review, compression, diagnostics, and storage insight features inside the app.</p>
-        <p>StorageCleaner does not require you to create an account to use its core features.</p>
+        <p>StorageCleaner does not require you to create a MesikaLabs account. The optional Gmail Cleanup feature requires you to authenticate with your own Google account.</p>
 
         <h2>3. On-device processing</h2>
         <p>StorageCleaner is built so AI analysis and cleanup-related processing happen on-device. This includes tasks such as duplicate detection, similarity grouping, local analysis preparation, and related review workflows.</p>
         <p>Your photos, videos, contacts, and storage information are intended to remain on your device while these features run.</p>
 
-        <h2>4. Privacy-preserving product analytics</h2>
+        <h2>4. Optional Gmail Cleanup</h2>
+        <p>If you enable Gmail Cleanup, the app uses Google's OAuth authorization screen and requests the restricted <code>gmail.modify</code> scope. Communication is sent directly between the app on your device and Google's Gmail API; MesikaLabs does not operate an email-content server for this feature.</p>
+        <p>The app requests message metadata needed to show cleanup candidates, including sender, subject, date, labels, estimated size, and Google message identifiers. It does not request raw message content, message bodies, or attachments. OAuth access and refresh tokens are stored in the iOS Keychain and are not included in analytics.</p>
+        <p>When you confirm cleanup, selected messages are moved to Gmail Trash. The feature does not permanently delete Gmail messages. You can use Undo immediately, and you can disconnect Gmail from the app to revoke and remove the locally stored authorization.</p>
+        <p>Your use of Gmail remains subject to <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>. StorageCleaner's use and transfer of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
+
+        <h2>5. Privacy-preserving product analytics</h2>
         <p>StorageCleaner uses TelemetryDeck to collect limited, anonymous product analytics so we can understand whether onboarding, scanning, cleanup review, purchases, and other core workflows operate successfully.</p>
         <p>Analytics events may include an anonymized installation identifier, app and system version, device type, event name, and deliberately coarse values such as item-count or reclaimable-space ranges. The identifier is not tied to an account or other direct identity, and analytics data is not used to track you across other companies' apps or websites.</p>
-        <p>We do not send photos, videos, contacts, filenames, media identifiers, search text, email content, exact storage amounts, or free-form user content to TelemetryDeck. IP addresses are not stored by TelemetryDeck. TelemetryDeck processes analytics data on European infrastructure. See <a href="https://telemetrydeck.com/privacy/">TelemetryDeck's privacy policy</a> for provider details.</p>
+        <p>We do not send photos, videos, contacts, filenames, media identifiers, search text, Gmail addresses, senders, subjects, message identifiers, email content, OAuth tokens, exact storage amounts, or free-form user content to TelemetryDeck. Gmail analytics are limited to coarse count or size ranges and fixed workflow names. IP addresses are not stored by TelemetryDeck. TelemetryDeck processes analytics data on European infrastructure. See <a href="https://telemetrydeck.com/privacy/">TelemetryDeck's privacy policy</a> for provider details.</p>
 
-        <h2>5. Data sharing and tracking</h2>
+        <h2>6. Data sharing and tracking</h2>
         <p>We do not sell personal data, use third-party advertising SDKs, or share photos or contacts for marketing. We do not use analytics for cross-app tracking, advertising, or data-broker profiling, and StorageCleaner does not request App Tracking Transparency permission.</p>
 
-        <h2>6. Purchases</h2>
+        <h2>7. Purchases</h2>
         <p>If StorageCleaner offers paid features, subscriptions and payments are handled by Apple through the App Store. We do not receive your full payment details or Apple ID credentials.</p>
 
-        <h2>7. Your choices</h2>
-        <p>You can revoke Photos or Contacts access at any time in iOS Settings. Some features may stop working until access is restored. If you previously denied access, the app may direct you back to Settings to recover the blocked feature.</p>
+        <h2>8. Your choices</h2>
+        <p>You can revoke Photos or Contacts access at any time in iOS Settings. You can disconnect Gmail from inside StorageCleaner or revoke StorageCleaner's access from your Google Account security settings. Some features may stop working until access is restored. If you previously denied access, the app may direct you back to Settings to recover the blocked feature.</p>
 
-        <h2>8. Changes to this policy</h2>
+        <h2>9. Changes to this policy</h2>
         <p>We may update this Privacy Policy from time to time. The latest version will always be available at this page.</p>
 
-        <h2>9. Contact</h2>
+        <h2>10. Contact</h2>
         <p>If you have questions about this Privacy Policy, contact <a href="mailto:privacy@mesikalabs.com">privacy@mesikalabs.com</a>. For app support, contact <a href="mailto:storagecleaner@mesikalabs.com">storagecleaner@mesikalabs.com</a>.</p>
     </main>
 
