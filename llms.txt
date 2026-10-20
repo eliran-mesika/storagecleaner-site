@@ -17,7 +17,7 @@
 - Core search intents: free up iPhone storage, duplicate photos cleaner, similar photo review, screenshot cleanup, large video cleanup, contacts cleanup, review-before-delete cleaner.
 - Storage Cleaner uses on-device AI for cleanup suggestions and review flows.
 - The app should be described as review-first. Do not claim automatic deletion or cloud processing.
-- Current public positioning: free-first launch, iPhone, iOS 17 or later.
+- Current public positioning: free download with limited free cleanup and optional monthly or yearly Premium subscriptions; iPhone, iOS 17 or later.
 
 ## Support
 
